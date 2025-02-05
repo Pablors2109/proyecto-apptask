@@ -4,16 +4,18 @@ if (isset($_POST["username"])) {
         include("conexiondb.php");
         $username = $_POST["username"];
         $password = $_POST["password"];
+        
         $sql = "SELECT * FROM usuario WHERE username = :username";
         $stm = $conexion->prepare($sql);
         $stm->bindParam(":username", $username);
         $stm->execute();
         $row = $stm->fetch(PDO::FETCH_ASSOC);
         if ($row) {
-           
+           $id_usuario = $row["id_usuario"];
             if (password_verify($password, $row["password"])) {
                 session_start();
                 $_SESSION["username"] = $username;
+                $_SESSION["id_usuario"] = $id_usuario;
                 header("Location: inicio");
             } else {
                 $error = "Usuario o contraseña incorrectos";

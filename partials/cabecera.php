@@ -2,6 +2,7 @@
 session_start();
 if (isset($_SESSION["username"])) {
     $username = $_SESSION["username"];
+    $id_usuario= $_SESSION["id_usuario"];
 } else {
     header("Location: index");
     exit();

@@ -32,7 +32,7 @@ include("conexiondb.php");
         <main>
             <aside>
                 <ul>
-                    <li><a href="usuario"><i class="fa-solid fa-store"></i>Usuario</a></li>
+                    <li><a href="index"><i class="fa-solid fa-store"></i>Salir</a></li>
                     <li><a href="tarea"><i class="fa-solid fa-boxes-packing"></i>Tarea</a></li>
                     
                 </ul>

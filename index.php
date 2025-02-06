@@ -40,7 +40,7 @@ if (isset($_POST["username"])) {
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-    <form action="" method="post">
+    <form id="login-form" class="active" action="" method="post">
         <h1>Iniciar sesión apptask</h1>
         <label for="username">Nombre de usuario</label>
         <input type="text" name="username" id="username" required placeholder="Username">
@@ -51,6 +51,9 @@ if (isset($_POST["username"])) {
             echo "<p>" . $error . "</p>";
         }
         ?>
+        <div class="button-container">
+            <a href="register.php" class="button">¿No tienes una cuenta? Regístrate aquí</a>
+        </div>
     </form>
 </body>
 </html>

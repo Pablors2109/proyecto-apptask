@@ -27,15 +27,13 @@ if (!$tarea) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $titulo = $_POST["titulo"];
     $descripcion = $_POST["descripcion"];
-    $fecha_creacion = $_POST["fecha_creacion"];
     $estado = $_POST["estado"];
 
     // Actualizar la tarea en la base de datos
-    $sql = "UPDATE task SET titulo = :titulo, descripcion = :descripcion, fecha_creacion = :fecha_creacion, estado = :estado WHERE id_task = :id_task AND id_usuario = :id_usuario";
+    $sql = "UPDATE task SET titulo = :titulo, descripcion = :descripcion, estado = :estado WHERE id_task = :id_task AND id_usuario = :id_usuario";
     $stm = $conexion->prepare($sql);
     $stm->bindParam(":titulo", $titulo);
     $stm->bindParam(":descripcion", $descripcion);
-    $stm->bindParam(":fecha_creacion", $fecha_creacion);
     $stm->bindParam(":estado", $estado);
     $stm->bindParam(":id_task", $id_task);
     $stm->bindParam(":id_usuario", $id_usuario);
@@ -45,30 +43,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     exit();
 }
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Tarea</title>
+    <link rel="stylesheet" href="css/editar_tarea.css">
+</head>
+<body>
+    <main>
+        <h1>Editar Tarea</h1>
+        <form method="post">
+            <label for="titulo">Título:</label>
+            <input type="text" name="titulo" id="titulo" value="<?php echo htmlspecialchars($tarea['titulo']); ?>" required><br>
 
-<main>
-    <h1>Editar Tarea</h1>
-    <form method="post">
-        <label for="titulo">Título:</label>
-        <input type="text" name="titulo" id="titulo" value="<?php echo htmlspecialchars($tarea['titulo']); ?>" required><br>
+            <label for="descripcion">Descripción:</label>
+            <textarea name="descripcion" id="descripcion" required><?php echo htmlspecialchars($tarea['descripcion']); ?></textarea><br>
 
-        <label for="descripcion">Descripción:</label>
-        <textarea name="descripcion" id="descripcion" required><?php echo htmlspecialchars($tarea['descripcion']); ?></textarea><br>
+            <!-- Eliminar la opción de editar la fecha de creación -->
+            <!-- <label for="fecha_creacion">Fecha de Creación:</label>
+            <input type="date" name="fecha_creacion" id="fecha_creacion" value="<?php echo htmlspecialchars($tarea['fecha_creacion']); ?>" required><br> -->
 
-        <label for="fecha_creacion">Fecha de Creación:</label>
-        <input type="date" name="fecha_creacion" id="fecha_creacion" value="<?php echo htmlspecialchars($tarea['fecha_creacion']); ?>" required><br>
+            <label for="estado">Estado:</label>
+            <select name="estado" id="estado" required>
+                <option value="en proceso" <?php echo ($tarea['estado'] == 'en proceso') ? 'selected' : ''; ?>>En proceso</option>
+                <option value="acabada" <?php echo ($tarea['estado'] == 'acabada') ? 'selected' : ''; ?>>Acabada</option>
+            </select><br>
 
-        <label for="estado">Estado:</label>
-        <select name="estado" id="estado" required>
-            <option value="en proceso" <?php echo ($tarea['estado'] == 'en proceso') ? 'selected' : ''; ?>>En proceso</option>
-            <option value="acabada" <?php echo ($tarea['estado'] == 'acabada') ? 'selected' : ''; ?>>Acabada</option>
-        </select><br>
-
-        <input type="submit" value="Guardar Cambios">
-        <a href="tarea.php">Cancelar</a>
-    </form>
-</main>
-
+            <input type="submit" value="Guardar Cambios">
+            <a href="tarea.php">Cancelar</a>
+        </form>
+    </main>
+</body>
+</html>
 <?php
 include("partials/footer.php"); // Incluye el pie de página si lo tienes
 ?>

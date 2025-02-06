@@ -3,12 +3,15 @@ body {
     background-color: #f4f4f4;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .container {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    flex: 1;
 }
 
 header {
@@ -60,6 +63,8 @@ section {
     flex: 1;
     padding: 2rem;
     background-color: #fff;
+    width: 80%; /* Added for consistency */
+    max-width: 600px; /* Added for consistency */
 }
 
 h1, h3 {

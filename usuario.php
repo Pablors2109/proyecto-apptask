@@ -33,9 +33,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-<main>
-    <h1>Editar Perfil</h1>
+<main style="width: 80%; max-width: 800px; margin: auto;">
+    
     <form method="post">
+        <h1>Editar Perfil</h1>
         <label for="nombre">Nombre:</label>
         <input type="text" name="nombre" id="nombre" value="<?php echo htmlspecialchars($usuario['nombre']); ?>" required><br>
 
@@ -43,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input type="text" name="apellidos" id="apellidos" value="<?php echo htmlspecialchars($usuario['apellidos']); ?>" required><br>
 
         <input type="submit" value="Guardar Cambios">
-        <a href="tarea.php">Cancelar</a>
+        <a href="inicio.php">Cancelar</a>
     </form>
 </main>
 

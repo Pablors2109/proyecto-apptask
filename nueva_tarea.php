@@ -20,18 +20,3 @@ $id_usuario = $_SESSION["id_usuario"];
 $stm->execute();
 header("Location: tarea.php");
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nueva Tarea</title>
-    <link rel="stylesheet" href="css/tarea.css">
-</head>
-<body>
-    <form action="" method="post">
-        <h1>Introduce una nueva tarea</h1>
-        <!-- ...existing code... -->
-    </form>
-</body>
-</html>

@@ -13,7 +13,8 @@ form {
     padding: 2rem;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    width: 80%; /* Changed to 80% for consistency */
+    max-width: 600px; /* Changed to 600px for consistency */
 }
 
 h1 {
